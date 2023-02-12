@@ -63,5 +63,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 2. Adding a "restore deleted messages" option which will be easy to implement since the message is not actually deleted from the database, rather its status is marked as deleted, and it is not displayed in lists for that specific user.
 3. Improving frontend by using VueJS, and adding a search option for particular sender/recipient in the Inbox and Sentbox pages.
 4. Extending to use a MySQL server and building separate containers for it in Docker.
+5. Include real-time functionality so that whenever a new message is sent to a user, their inbox is refreshed automatically, without the user manually having to refresh their Inbox page.
 
 
