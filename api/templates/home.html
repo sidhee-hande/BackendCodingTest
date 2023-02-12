@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Hello {{user}} , this is your home page.</h1>
+  <a href="{% url 'logout' %}">
+    <button class="bt">
+        Log Out
+    </button> 
+    </a>
+    <a href="/api/sentbox"> 
+        <button class="bt">
+            Outbox
+        </button>
+    </a>
+    <a href="/api/inbox"> 
+        <button class="bt">
+            Inbox
+        </button>
+    </a>
+    <a href="/api/compose"> 
+        <button class="bt">
+       Compose Message
+        </button>
+    </a>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">
+    <button class="bt">
+        Log In
+    </button> </a>
+{% endif %}
+{% endblock %}
+
+<style>
+
+.bt {
+        background-color: white;
+        border: 2px solid black;
+        color: green;
+        padding: 5px 10px;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        margin: 10px 30px;
+        cursor: pointer;
+        }
+</style>
