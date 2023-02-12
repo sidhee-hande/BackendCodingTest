@@ -13,7 +13,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 **STEPS:**
 
-1. Clone this git repository
+1. Clone this git repository 
 2. Build the docker container by running the following command:
     docker build . -t message-app
 3. Run the docker container by running the following command:
@@ -32,7 +32,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 1. System should have python3 and pip3 installed. 
 
 **STEPS:**
-1. Clone git repository
+1. Clone this git repository
 2. Run the following command:
   python3 -m venv virtualenvironment 
 3. Activate the virtual environment by running the following command:
