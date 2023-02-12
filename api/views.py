@@ -15,13 +15,17 @@ from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from rest_framework import status
 
 
+
+#return signup template
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
+#list of allowed methods
 @login_required
 @api_view(['GET'])
 def ApiOverview(request):
@@ -36,9 +40,6 @@ def ApiOverview(request):
 	}
 
 	return Response(api_urls)
-
-
-from rest_framework import status
 
 
 
@@ -119,9 +120,11 @@ def delete_message(request):
 
 	obj = Messages.objects.get(pk=record_id)
 	if obj:
-
+		#delete message from sentbox for user
 		if username == obj.sender:
 			obj.sender_delete_status = True
+		
+		#delete message from inbox for user
 		if username == obj.receiver:
 			obj.receiver_delete_status = True
 		obj.save()
@@ -130,6 +133,8 @@ def delete_message(request):
 	else:
 	 	return Response(status=status.HTTP_404_NOT_FOUND)
 
+
+#return inbox template 
 @login_required
 def inbox(request):
 	username = request.user
@@ -155,6 +160,8 @@ def inbox(request):
 
    
 
+
+#return sentbox template
 @login_required
 def sentbox(request):
 	username = request.user
@@ -177,6 +184,7 @@ def sentbox(request):
 		return HttpResponse(template.render(context,request))
 
 
+#return compose message template
 @requires_csrf_token
 def compose(request):
 	c = {}
